@@ -3,7 +3,8 @@ import { IAppState } from "./background/AppState";
 
 enum Actions {
   SET_TRANSACTIONS = 'SET_TRANSACTIONS',
-  SET_STATE = 'SET_STATE'
+  SET_STATE = 'SET_STATE',
+  GET_TRANSACTIONS = 'GET_TRANSACTIONS'
 }
 
 export interface SetTransactionAction {

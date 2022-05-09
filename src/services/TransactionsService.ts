@@ -1,5 +1,4 @@
 import { BaseService } from './infrastructure/BaseService';
-import TransactionData from '../utils/constants';
 
 /**
  * The transaction object
@@ -10,6 +9,7 @@ export interface Transaction {
   to: string;
   from: string;
   value: number;
+  date: string;
 }
 
 export interface TransactionsServiceState {
@@ -36,6 +36,8 @@ export class TransactionsService extends BaseService<TransactionsServiceState> {
   public async addTransaction(newTransaction: Transaction): Promise<void> {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
+        const { transactions } = this.getState();
+        this.updateState({ transactions: [...transactions, newTransaction] });
         resolve();
       }, 300);
     });
@@ -48,15 +50,13 @@ export class TransactionsService extends BaseService<TransactionsServiceState> {
   public async getListOfTransactions(): Promise<Array<Transaction>> {
     return new Promise<Array<Transaction>>((resolve) => {
       setTimeout(() => {
-        resolve([
-          {
-            id: 1,
-            to: 'pepito',
-            from: 'ojete',
-            value: 1000,
-          },
-        ]);
+        const { transactions } = this.getState();
+        resolve(transactions);
       }, 300);
     });
+  }
+
+  private SetTransactions(): void {
+
   }
 }

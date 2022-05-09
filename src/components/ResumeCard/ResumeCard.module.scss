@@ -1,8 +1,9 @@
 .ResumeCard {
-  background-color: cadetblue;
+  background-color: #eaf3fc;
 	display: block;
 	text-align: center;
 	padding: 30px;
+	border-radius: 10px;
 
 	h3 {
 		margin: 0;
@@ -11,6 +12,15 @@
 
 	.DolarLabel {
 		margin-bottom: 20px;
+		color: #b6c2d0;
+	}
+
+	.ArrowImage {
+		margin-bottom: 10px;
+	}
+
+	.SendLabel {
+		font-weight: 600;
 	}
 
 	span {

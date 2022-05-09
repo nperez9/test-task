@@ -21,4 +21,10 @@ const defaults = {
   },
 };
 
+export interface PastTrantransaction {
+  date: string;
+  amount: string;
+  recipient: string;
+}
+
 export default defaults;

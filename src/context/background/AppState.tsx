@@ -2,18 +2,18 @@ import React, { useReducer } from 'react';
 import AppContext from './AppContext';
 import AppReducer from './AppReducer';
 import Actions from '../contextActions';
-import { Transaction } from '../../services/TransactionsService';
+import { Transaction, TransactionsService } from '../../services/TransactionsService';
+import { Steps } from '../../containers/Wallet.types';
+import { initAppState } from './AppDefaultState';
 
 export interface IAppState {
   transactions: Array<Transaction>;
+  step: Steps;
 }
-
-export const initAppState: IAppState = {
-  transactions: [],
-};
 
 const AppState = (props: any) => {
   const [state, dispatch] = useReducer(AppReducer, initAppState);
+  const transactionService = new TransactionsService(initAppState);
 
   // Set app state
   const setState = (newState: IAppState) => {
@@ -24,8 +24,20 @@ const AppState = (props: any) => {
   };
   
   // TODO: Complete the addTransaction method
-  const addTransaction = (transaction: Transaction) => {
+  const addTransaction = async (transaction: Transaction) => {  
+    dispatch({
+      type: Actions.SET_TRANSACTIONS,
+      payload: [...state.transactions, transaction]
+    });
+    return await transactionService.addTransaction(transaction);
+  }
 
+  const getTransactions = async () => {
+    const transactions = await transactionService.getListOfTransactions();
+    dispatch({
+      type: Actions.SET_TRANSACTIONS,
+      payload: transactions,
+    });
   }
 
   return (
@@ -34,6 +46,7 @@ const AppState = (props: any) => {
         state,
         setState,
         addTransaction,
+        getTransactions,
       }}
     >
       {props.children}

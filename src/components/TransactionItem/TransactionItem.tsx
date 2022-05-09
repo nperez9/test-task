@@ -1,16 +1,21 @@
 import React from 'react';
 
-const TransactionItem = () => {
+import { TransactionItemProps } from './TransactionItem.types';
+import RoundLogo from '../../library/RoundLogo';
+import { dolarAmount } from '../../utils';
+
+const TransactionItem: React.FC<TransactionItemProps> = ({ date, amount }) => {
+	
   return (
 		<div>
-			<img src="" alt="logo" />
+			<RoundLogo source='/img/etherum.png' alt='Etherum logo' isInlineBlock />
 			<div>
-				<span>recieved ether</span>
-				<span>date</span>
+				<span>Send ether</span>
+				<span>{date}</span>
 			</div>
 			<div>
-				<span>-3 eth</span>
-				<span>-600 usd</span>
+				<span>{amount} eth</span>
+				<span>{dolarAmount(amount)} usd</span>
 			</div>
 		</div>
 	);
