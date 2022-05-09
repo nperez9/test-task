@@ -1,0 +1,25 @@
+.ResumeHeader {
+  display: flex;
+	margin-bottom: 15px;
+	margin-top: 10px;
+
+  .Logo {
+    width: 60px;
+		margin: 0;
+  }
+
+  .Info {
+    width: 67%;
+  }
+
+  .Title {
+    font-weight: 600;
+    font-size: 1.25em;
+		margin: 0;
+  }
+
+  .Subtitle {
+    color: #b6c2d0;
+    font-size: 0.75em;
+  }
+}

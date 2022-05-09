@@ -3,19 +3,20 @@ import React from 'react';
 import { TransactionItemProps } from './TransactionItem.types';
 import RoundLogo from '../../library/RoundLogo';
 import { dolarAmount } from '../../utils';
+import styles from './TransactionItem.module.scss';
 
 const TransactionItem: React.FC<TransactionItemProps> = ({ date, amount }) => {
 	
   return (
-		<div>
+		<div className={styles.TransactionItem}>
 			<RoundLogo source='/img/etherum.png' alt='Etherum logo' isInlineBlock />
 			<div>
-				<span>Send ether</span>
-				<span>{date}</span>
+				<span className={styles.Title}>Send ether</span>
+				<span className={styles.Subtitle}>{date}</span>
 			</div>
-			<div>
-				<span>{amount} eth</span>
-				<span>{dolarAmount(amount)} usd</span>
+			<div className={styles.AmountLabel}>
+				<span className={styles.Title}>-{amount} ETH</span>
+				<span className={styles.Subtitle}>{dolarAmount(amount)} USD</span>
 			</div>
 		</div>
 	);

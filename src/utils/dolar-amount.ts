@@ -1,5 +1,6 @@
 // TODO: obtain this from an API
-const exchangeValue = 2500;
+import TransactionData from './constants';
+const exchangeValue = TransactionData.ethPrice;
 
 /**
  * Returns the eth amount in dollars 

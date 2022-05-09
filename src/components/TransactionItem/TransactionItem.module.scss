@@ -1,3 +1,30 @@
 .TransactionItem {
-    
+  display: flex;
+	flex-flow: row;
+	align-content: space-between;
+	border-bottom: 1px #b6c2d0 solid;
+	padding-bottom: 5px;
+	margin-top: 10px;
+
+	div {
+		width: 33%;
+	}
+
+	span {
+		display: block;
+	}
+
+	.AmountLabel {
+		text-align: right;
+	}
+
+	.Title {
+		font-weight: 600;
+		font-size: 1.25em;
+	}
+
+	.Subtitle {
+		color: #b6c2d0;
+		font-size: 0.75em;
+	}
 }

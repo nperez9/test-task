@@ -1,6 +1,5 @@
 
 export interface ResumeCardProps {
-    ethAmount: number;
-    dolarAmount: number;
+    amount: number;
     clickHandler: Function;
 }

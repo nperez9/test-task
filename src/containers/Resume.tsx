@@ -1,9 +1,10 @@
-import React, { ReactNode, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import ResumeCard from '../components/ResumeCard/ResumeCard';
 import TransactionItem from '../components/TransactionItem/TransactionItem';
 import ResumeHeader from '../components/ResumeHeader/ResumeHeader';
 import AppContext from '../context/background/AppContext';
+import TransactionData from '../utils/constants'
 
 import Container from '../library/Container';
 import { Steps } from './Wallet.types';
@@ -28,8 +29,8 @@ const Resume = () => {
 
 	return (
     <Container>
-      <ResumeHeader />
-      <ResumeCard ethAmount={0} dolarAmount={0} clickHandler={sendHandler}/>
+      <ResumeHeader publicAddress={TransactionData.publicAddress} />
+      <ResumeCard amount={TransactionData.accountBalance} clickHandler={sendHandler}/>
       {renderTransactions()}
     </Container>
   );
