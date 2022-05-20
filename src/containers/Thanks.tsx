@@ -1,20 +1,22 @@
 import React, { useContext } from 'react';
+import ThanksBody from '../components/ThanksBody/ThanksBody';
+
+import ThanksFooter from '../components/ThanksFooter/ThanksFooter';
 import AppContext from '../context/background/AppContext';
-import Container from '../library/Container';
 import { Steps } from './Wallet.types';
 
 const Thanks = () => {
-	const { state, setState } = useContext(AppContext);
+	const { setStep } = useContext(AppContext);
 
 		const doneHandler = () => {
-			setState({...state, step: Steps.RESUME})
+			setStep(Steps.RESUME);
 		}
 
     return (
-			<Container>
-				<h1>Successfully!</h1>
-				<button onClick={() => {doneHandler();}}> Done </button>
-			</Container>
+			<>
+				<ThanksBody />
+				<ThanksFooter doneHandler={doneHandler} />
+			</>
     );
 };
 
