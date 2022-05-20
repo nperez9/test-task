@@ -25,11 +25,13 @@ const AppState = (props: any) => {
   
   // TODO: Complete the addTransaction method
   const addTransaction = async (transaction: Transaction) => {  
+    await transactionService.addTransaction(transaction);
+    const transactions = await transactionService.getListOfTransactions();
     dispatch({
       type: Actions.SET_TRANSACTIONS,
-      payload: [...state.transactions, transaction]
+      payload: transactions
     });
-    return await transactionService.addTransaction(transaction);
+    console.log(transactions);
   }
 
   const getTransactions = async () => {
@@ -40,6 +42,13 @@ const AppState = (props: any) => {
     });
   }
 
+  const setStep = (step: Steps) => {
+    dispatch({
+      type: Actions.SET_STEP,
+      payload: step
+    });
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -47,6 +56,7 @@ const AppState = (props: any) => {
         setState,
         addTransaction,
         getTransactions,
+        setStep
       }}
     >
       {props.children}

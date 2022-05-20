@@ -1,0 +1,20 @@
+.Button {
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.15em;
+  font-weight: 600;
+  width: 100%;
+}
+
+.primary {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}
+
+.secondary {
+  background-color: #167eff;
+  border: 1px solid #167eff;
+  color: white;
+}

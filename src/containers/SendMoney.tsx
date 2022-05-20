@@ -1,21 +1,42 @@
 import React, { useContext, useState } from 'react';
-import Container from '../library/Container';
-import AppContext from '../context/background/AppContext';
+
 import { Steps } from './Wallet.types';
+import AppContext from '../context/background/AppContext';
+
+import SendMoneyHeader from '../components/SendMoneyHeader/SendMoneyHeader';
+import SendForm from '../components/SendForm/SendForm';
+import SendFooter from '../components/SendFooter/SendFooter';
 
 const SendMoney = () => {
-	const { state, setState, addTransaction } = useContext(AppContext);
+	const { state, addTransaction, setStep } = useContext(AppContext);
 
 	const [amount, setAmount] = useState<number>(0);
 	const [recipent, setRecipient] = useState<string>('');
 	const [errorMessage, setErrorMesage] = useState<string>(''); 
 
 	const cancelHandler = () => {
-		setState({...state, step: Steps.RESUME});
+		setStep(Steps.RESUME);
+	}
+
+	const validateInputs = (): string => {
+		let error = '';
+		if (!amount) {
+			error = 'You must complete the amount';
+		}
+		if (!recipent) {
+			error = 'You must complete Recipent';
+		}
+		return error;
 	}
 
 	const doneHandler = async () => {
 		const { transactions } = state;
+		const validation = validateInputs();
+
+		if (validation) {
+			setErrorMesage(validation);
+			return;
+		}
 
 		await addTransaction({
 			value: amount,
@@ -24,30 +45,16 @@ const SendMoney = () => {
 			to: recipent,
 			from: '1123023'
 		});
-		console.log(state);
-		setState({...state, step: Steps.DONE});
+		console.log('state', state);
+		setStep(Steps.DONE);
 	}
 
   return (
-		<Container>
-			<header>
-				<span>Send money</span>
-			</header>
-			<div>
-				<div>
-					<label htmlFor="amount">Amount</label>
-					<input type="number" name="amount" placeholder="0.00" required/>
-				</div>
-				<div>
-					<label htmlFor="recipent">Add Recipient</label>
-					<input type="text" name="recipent" placeholder="Public Recipient" required/>
-				</div>
-				<div>
-					<button onClick={() => {cancelHandler()}}>Cancel</button>
-					<button onClick={() => {doneHandler()}}>Done</button>
-				</div>
-			</div>
-		</Container>
+		<>
+			<SendMoneyHeader cancelHandler={cancelHandler} />
+			<SendForm updateAmount={setAmount} updateRecipent={setRecipient} errorMessage={errorMessage} />
+			<SendFooter  cancelHandler={cancelHandler} doneHandler={doneHandler} />
+		</>
 	);
 };
 

@@ -1,0 +1,15 @@
+.SMHeader {
+  h1 {
+    font-weight: 600;
+    font-size: 1.25em;
+    margin: 0;
+    display: inline-block;
+  }
+
+  span {
+    font-weight: 800;
+    float: right;
+    padding: 5px;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,27 @@
+.SendForm {
+  .FormControl {
+    margin-bottom: 25px;
+
+    label {
+      display: block;
+      font-size: 1em;
+      color: #57595c;
+    }
+
+    input {
+      margin-top: 5px;
+      border: none;
+      border-bottom: 3px solid black;
+      font-size: 1em;
+      background: none !important;
+      padding: 10px 5px;
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  .errorInput {
+    color: #cb1111;
+    font-weight: bold;
+  }
+}

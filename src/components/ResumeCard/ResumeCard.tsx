@@ -11,7 +11,7 @@ const ResumeCard: React.FC<ResumeCardProps> = ({ amount, clickHandler}) => {
     <div className={styles.ResumeCard}>
       <h3>{amount} ETH</h3>
       <span className={styles.DolarLabel}>${dolarAmount(amount)} USD</span>
-      <div onClick={() => {clickHandler()}}>
+      <div onClick={() => {clickHandler()}} className={styles.SendContainer }>
         <RoundLogo source='/img/uparrow.png' alt='up-arrow' classname={styles.ArrowImage} />
         <span className={styles.SendLabel}>Send</span>
       </div>

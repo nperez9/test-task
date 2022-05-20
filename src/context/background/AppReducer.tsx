@@ -1,7 +1,7 @@
-import Actions, { SetStateAction, SetTransactionAction } from '../contextActions';
+import Actions, { SetStateAction, SetStepAction, SetTransactionAction } from '../contextActions';
 import { IAppState } from './AppState';
 
-type AppAction = SetTransactionAction | SetStateAction;
+type AppAction = SetTransactionAction | SetStateAction | SetStepAction;
 
 const appReducer = (
   state: IAppState,
@@ -17,6 +17,11 @@ const appReducer = (
       return {
         ...state,
         transactions: action.payload,
+      };
+    case Actions.SET_STEP:
+      return {
+        ...state,
+        step: action.payload,
       };
     default:
       return state;

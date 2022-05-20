@@ -13,7 +13,9 @@ const Resume = () => {
   const { state: { transactions }, setState, getTransactions } = useContext(AppContext);
 
   useEffect(() => {
-    getTransactions();
+    if (!transactions.length) {
+      getTransactions();
+    }
   }, []);
 
 	const sendHandler = () => {

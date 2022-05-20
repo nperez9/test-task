@@ -1,0 +1,9 @@
+.SendFooter {
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    width: 48%;
+  }
+}
